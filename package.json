@@ -9,6 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "@fastify/http-proxy": "^9.3.0",
+    "axios": "^1.6.2",
     "fastify": "^4.24.3"
   }
 }

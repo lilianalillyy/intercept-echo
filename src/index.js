@@ -2,6 +2,7 @@ const fastify = require("fastify");
 const fastifyProxy = require("@fastify/http-proxy");
 const path = require("path");
 const { existsSync, readFileSync } = require("fs");
+const { default: axios } = require("axios");
 
 const PORT = process.env.PORT || 3030;
 
@@ -17,23 +18,23 @@ const shouldReplaceItix = existsSync(ITIX_PATH);
 
 const app = fastify();
 
+app.setErrorHandler((err, req, res) => {
+    console.log({ err })
+    res.send({ error: "internal intercept-echo error" });
+})
+
+if (shouldReplaceItix) {
+    app.get("/templateAssets/itix.echo24.js", async (req, res) => {
+        res.send(((await axios.get(`${UPSTREAM}${ITIX_URL}`)).data).replace(/\w+\.currentScript/, "itixScript"))
+    })
+
+    app.get("/templateAssets/itix.js", async (req, res) => {
+        res.header("Content-Type", "application/javascript").send(readFileSync(ITIX_PATH, "utf-8").replace("%__domain__%", DOMAIN).replace("%%__upstream_js__%%", "/templateAssets/itix.echo24.js"))
+    })
+}
+
 app.register(fastifyProxy, {
     upstream: UPSTREAM,
-    proxyPayloads: !shouldReplaceItix,
-    replyOptions: shouldReplaceItix ? {
-        async onResponse(req, res, body) {        
-            if (req.url === ITIX_URL) {
-                res.removeHeader("Content-Encoding")
-                res.removeHeader("Content-Length")
-                res.removeHeader("Via")
-                res.removeHeader("X-Varnish")
-                res.header("Server", "intercept-echo")
-                return res.send(readFileSync(ITIX_PATH, "utf-8").replace("%__domain__%", DOMAIN))
-            }
-
-            res.send(body);
-        }
-    } : undefined,
 })
 
 app.listen({

@@ -10,12 +10,6 @@ dependencies:
   fastify:
     specifier: ^4.24.3
     version: 4.24.3
-  stream-to-string:
-    specifier: ^1.2.1
-    version: 1.2.1
-  undici:
-    specifier: ^5.28.2
-    version: 5.28.2
 
 packages:
 
@@ -393,10 +387,6 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: false
 
-  /promise-polyfill@1.1.6:
-    resolution: {integrity: sha512-7rrONfyLkDEc7OJ5QBkqa4KI4EBhCd340xRuIUPGCfu13znS+vx+VDdrT9ODAJHlXm7w4lbxN3DRjyv58EuzDg==}
-    dev: false
-
   /proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -500,12 +490,6 @@ packages:
   /split2@4.2.0:
     resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
     engines: {node: '>= 10.x'}
-    dev: false
-
-  /stream-to-string@1.2.1:
-    resolution: {integrity: sha512-WsvTDNF8UYs369Yko3pcdTducQtYpzEZeOV7cTuReyFvOoA9S/DLJ6sYK+xPafSPHhUMpaxiljKYnT6JSFztIA==}
-    dependencies:
-      promise-polyfill: 1.1.6
     dev: false
 
   /string_decoder@1.3.0:
