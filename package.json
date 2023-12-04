@@ -1,0 +1,14 @@
+{
+  "name": "intercept-echo",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/http-proxy": "^9.3.0",
+    "fastify": "^4.24.3"
+  }
+}
