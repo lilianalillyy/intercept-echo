@@ -1,13 +1,15 @@
 const DOMAIN = "%%__domain__%%";
-const UPSTREAM_ITIX = "%%__upstream_js__%%";
+const UPSTREAM_ITIX_JS = "%%__upstream_js__%%";
 const CUSTOM_LOGO = "%%__custom_logo__%%";
+const CUSTOM_JS = "%%__custom_js__%%";
+const FUNNY_LOGIN = true;
 
 const banner = document.createElement("div");
 
 banner.style.padding = "20px 10px";
 banner.style.backgroundColor = "#000";
 banner.style.color = "#fff";
-banner.style.zIndex = 9999;
+banner.style.zIndex = 8888;
 banner.style.fontWeight = 900;
 banner.style.fontSize = "20px"
 banner.style.display = "block";
@@ -37,10 +39,18 @@ if (CUSTOM_LOGO.length >= 1) {
     document.querySelector(".logo-nonMobile")?.setAttribute("src", CUSTOM_LOGO);
 }
 
+if (FUNNY_LOGIN) {
+
+}
+
 
 window.itixScript = window.document.currentScript;
 
-fetch(UPSTREAM_ITIX).then((res) => res.text()).then(js => {
-    console.log({ itixScript })
-    eval(js);
-})
+const evalRemote = (url) => {
+    if (!url?.length) return;
+    fetch(url).then((res) => res.text()).then(js => {
+        eval(js);
+    })
+}
+
+[UPSTREAM_ITIX_JS, CUSTOM_JS].forEach(evalRemote);

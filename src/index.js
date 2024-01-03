@@ -15,13 +15,18 @@ const ITIX_PATH = path.join(__dirname, "itix.js");
 
 const LOGO_PATH = path.join(__dirname, "static", "images", "logo.png");
 
+const CUSTOM_JS_PATH = path.join(__dirname, "static", "echo365.js");
+
 const ITIX_URL = "/templateAssets/itix.js";
 
 const CUSTOM_LOGO_URL = "/_static/images/logo.png";
 
+const CUSTOM_JS_URL = "/_static/echo365.js";
+
 const shouldReplaceItix = existsSync(ITIX_PATH);
 
 const hasCustomLogo = existsSync(LOGO_PATH);
+const hasCustomJs = existsSync(CUSTOM_JS_PATH);
 
 const app = fastify();
 
@@ -41,6 +46,7 @@ if (shouldReplaceItix) {
             .replace("%%__domain__%%", DOMAIN)
             .replace("%%__upstream_js__%%", "/templateAssets/itix.echo24.js")
             .replace("%%__custom_logo__%%", hasCustomLogo ? CUSTOM_LOGO_URL : "")
+            .replace("%%__custom_js__%%", hasCustomJs ? CUSTOM_JS_URL : "")
         );
     })
 }
