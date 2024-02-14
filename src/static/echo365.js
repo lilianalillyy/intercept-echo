@@ -43,14 +43,14 @@ const showKampanak = () => {
 const onKeyboardLetter = (letter) => {
     const nextLetter = KAMPAN[state] ?? null;
 
-    if (nextLetter === KAMPAN[KAMPAN.length - 1]) {
+    if (letter.toLowerCase() !== nextLetter.toLowerCase()) {
         state = 0;
-        showKampanak();
         return;
     }
 
-    if (letter.toLowerCase() !== nextLetter) {
+    if (nextLetter === KAMPAN[KAMPAN.length - 1]) {
         state = 0;
+        showKampanak();
         return;
     }
 
