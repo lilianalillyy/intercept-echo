@@ -1,0 +1,1 @@
+export const AJAX_RELOAD_EVENT = "ajaxReload";

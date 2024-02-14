@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "poc": {
+      "css": [
+        "/_static/build/poc.css"
+      ],
+      "js": [
+        "/_static/build/poc.js"
+      ]
+    }
+  }
+}

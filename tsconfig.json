@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+      "target": "ESNext",
+      "module": "ESNext",
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+      "rootDir": "./poc",
+      "outDir": "./src/static/poc",
+
+      "noEmitOnError": true,
+  
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+  
+      "sourceMap": true,
+      "declaration": true,
+      "declarationMap": true,
+  
+      "jsx": "react-jsx",
+  
+      "strict": true,
+      "allowSyntheticDefaultImports": true,
+      "useDefineForClassFields": true,
+  
+      "skipLibCheck": true,
+  
+      "composite": true
+    },
+  
+    "exclude": ["**/vite.config.ts", "**/dist"]
+  }
+  

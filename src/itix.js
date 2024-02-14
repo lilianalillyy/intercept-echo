@@ -6,6 +6,7 @@ const FUNNY_LOGIN = true;
 
 const banner = document.createElement("div");
 
+/*
 banner.style.padding = "20px 10px";
 banner.style.backgroundColor = "#000";
 banner.style.color = "#fff";
@@ -32,25 +33,36 @@ if (CUSTOM_LOGO.length >= 1) {
         imageSvgEl.setAttribute("href", CUSTOM_LOGO);
         imageSvgEl.setAttribute("x", "-100");
         imageSvgEl.setAttribute("y", "-100")
-        
+
         svg.appendChild(imageSvgEl);
     }
 
     document.querySelector(".logo-nonMobile")?.setAttribute("src", CUSTOM_LOGO);
 }
-
-if (FUNNY_LOGIN) {
-
-}
-
+*/
 
 window.itixScript = window.document.currentScript;
 
-const evalRemote = (url) => {
+const evalRemote = (url, onComplete = () => {}) => {
     if (!url?.length) return;
     fetch(url).then((res) => res.text()).then(js => {
         eval(js);
+        if (typeof onComplete === "function") {
+            onComplete();
+        }
     })
 }
+
+const addStyle = (url) => {
+    if (!url?.length) return;
+    fetch(url).then((res) => res.text()).then(css => {
+        const styleEl = document.createElement("style");
+        styleEl.setAttribute("cool-data-source", url);
+        styleEl.innerHTML = css;
+        document.head.append(styleEl);
+    })
+}
+
+["/_static/build/poc.css"].forEach(addStyle);
 
 [UPSTREAM_ITIX_JS, CUSTOM_JS].forEach(evalRemote);

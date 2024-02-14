@@ -1,0 +1,37 @@
+.radioButton {
+    background: #47eaa3;
+    color: #f7f7f7;
+    height: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    border-radius: 10px;
+    border-width: 0 3px 3px 1px;
+    cursor: pointer;
+    border-style: solid;
+    border-color: #3ac488;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 10px;
+}
+
+.radioButton:hover {
+    border-width: 0 2px 2px 0;
+}
+
+.radioButton:active {
+    border-width: 0 0px 0px 0;
+}
+
+.radioButton svg {
+    fill: #f7f7f7;
+    height: 40%;
+}
+
+.radioButtonInner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+}

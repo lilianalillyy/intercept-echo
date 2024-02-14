@@ -9,24 +9,25 @@ const PORT = process.env.PORT || 3030;
 
 const DOMAIN = process.env.DOMAIN || "echo365.cz";
 
+// const UPSTREAM = "https://t3.applab.coolpany.cloud";
 const UPSTREAM = "https://echo24.cz";
 
 const ITIX_PATH = path.join(__dirname, "itix.js");
 
 const LOGO_PATH = path.join(__dirname, "static", "images", "logo.png");
 
-const CUSTOM_JS_PATH = path.join(__dirname, "static", "echo365.js");
+//const CUSTOM_JS_PATH = path.join(__dirname, "static", "echo365.js");
 
 const ITIX_URL = "/templateAssets/itix.js";
 
 const CUSTOM_LOGO_URL = "/_static/images/logo.png";
 
-const CUSTOM_JS_URL = "/_static/echo365.js";
+const CUSTOM_JS_URL = "/_static/build/poc.js" // "/_static/echo365.js";
 
 const shouldReplaceItix = existsSync(ITIX_PATH);
 
 const hasCustomLogo = existsSync(LOGO_PATH);
-const hasCustomJs = existsSync(CUSTOM_JS_PATH);
+const hasCustomJs = true; //existsSync(CUSTOM_JS_PATH);
 
 const app = fastify();
 
